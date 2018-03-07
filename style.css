@@ -1,0 +1,55 @@
+img.product{
+    margin-left: auto;
+    margin-right: auto;
+     width: 200px;
+     display: block;
+ 
+ }
+ video {
+     width: 600px;
+ }
+ 
+ img#logo{
+     height: 75px;
+ }
+ div.vid{
+     text-align: center;
+ }
+ p#product, h3#product{
+     text-align: center;
+ }
+ p#product{
+     font-size: 1.5em;
+     font-weight: bold;
+ }
+ div#product{
+     border-style: solid;
+     border-width: 1px;
+     height: 350px;
+ }
+ div#order{
+         margin: auto;
+         width: 60%;
+         border: 3px solid black;
+         padding: 10px;
+         text-align: center;
+ }
+ div#order_col{
+     margin: auto;
+     width: 60%;
+     padding: 10px;
+     text-align: center;
+ }
+ div.footer{
+     text-align: center;
+     margin-left: auto;
+ }
+ 
+ form#bye{
+     text-align: center;
+ }
+ h3.card-prize{
+     text-align: center; 
+ }
+
+ 
