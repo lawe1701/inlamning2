@@ -6,7 +6,11 @@ $setDebug = false; // debugging on/off
 $debug = "";
 
 
-$sats = "SELECT 'Order_ID', 'Produkt_ID', 'Kund_ID' FROM `order`";
+
+$sats = "SELECT `order`.`Order_ID`, `kund`.`Förnamn`, `kund`.`Efternamn`, `kund`.`Telefonnummer`, `kund`.`mail`, `produkt`.`ProduktNamn`, `produkt`.`Pris`
+FROM `order`, `kund`, `produkt`
+WHERE `order`.`Kund_ID`=`kund`.`Kund_ID`
+AND `order`.`Produkt_ID` = `produkt`.`Produkt_ID`";
 
 $table = mysqli_query($connection, $sats) or die(mysqli_error($connection));
 
@@ -14,10 +18,41 @@ $array = array();
 while($row=$table->fetch_assoc()){
     $array[] = $row;
 }
-echo "<pre>";
-print_r($array);
-echo "</pre>";
+$tab = "";
+$tab .= <<<EOD
+<table class="table">
+<thead>
+    <tr>
+        <th>Ordernr</th>
+        <th>Förnamn</th>
+        <th>Efternamn</th>
+        <th>Telefon</th>
+        <th>Mail</th>
+        <th>Produktnamn</th>
+        <th>Pris</th>
+    </tr>
+</thead>
+<tbody>
+EOD;
 
+for($i=0; $i < count($array); $i++){
+
+    $debug .= "i= " . $i . ": Mod= " . ($i % 7) . "<br>" ;
+    if(($i % 7) == 0){
+        $debug .= "Är inne i if <br>";
+    }
+    $tab .=<<<EOD
+    <tr><td scope='row'>{$array[$i]['Order_ID']}</td>
+            <td>{$array[$i]['Förnamn']}</td>
+            <td>{$array[$i]['Efternamn']}</td>
+            <td>{$array[$i]['Telefonnummer']}</td>
+            <td>{$array[$i]['mail']}</td>
+            <td>{$array[$i]['ProduktNamn']}</td>
+            <td>{$array[$i]['Pris']} SEK</td></tr>
+EOD;
+}
+
+$tab .= "</tbody></table>";
 
 $html=<<<EOD
 <!DOCTYPE html>
@@ -43,33 +78,15 @@ $html=<<<EOD
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation"></button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Hem
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./index.php#products">Produkter</a>
-                </li>
-            </ul> 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> -->
+       cd.
         </div>
     </nav>
     <br>
 
     <div class='container'>
-        <div class="vid">
-            <video autoplay loop>
-            <source src="./images/tansag.mp4" type="video/mp4">Din browser kan inte visa filmen!</video>
-        </div>
-        <br>
-
+    <h1>Ordertabell</h1>
+        {$tab}
     </div>
-
 
 {$footer}
 
@@ -85,21 +102,6 @@ $html=<<<EOD
 EOD;
 
 
-// $cards="<div class='container'>";
-// for($i=0; $i < count($array); $i++){
-    
-//     $prodID = $array[$i]['Produkt_ID'];
-//     $titel=$array[$i]['ProduktNamn'];
-//     $besk=$array[$i]['Kortbeskrivning'];
-//     $bild=$array[$i]['bild'];
-//     $pris=$array[$i]['pris'];
-
-//     $debug .= "i= " . $i . ": Mod= " . ($i % 3) . "<br>" ;
-//     if(($i % 3) == 0){
-//         $debug .= "Är inne i if <br>";
-//         $cards.= "<div class='row'>";
-//     }
-
 
 echo $html;
 
@@ -108,36 +110,6 @@ if($setDebug){
 }
 exit;
 
-// <table class="table">
-// <thead>
-//     <tr>
-//         <th>Ordernr</th>
-//         <th>KundID</th>
-//         <th>Förnamn</th>
-//         <th>Efternamn</th>
-//         <th>Adress</th>
-//         <th>Postnr</th>
-//         <th>Postort</th>
-//         <th>Telefon</th>
-//         <th>Mail</th>
-//         <th>Ordernr</th>
-//         <th>ProduktID</th>
-//         <th>Produktnamn</th>
-//         <th>Pris</th>
-//     </tr>
-// </thead>
-// <tbody>
-//     <tr>
-//         <td scope="row"></td>
-//         <td></td>
-//         <td></td>
-//     </tr>
-//     <tr>
-//         <td scope="row"></td>
-//         <td></td>
-//         <td></td>
-//     </tr>
-// </tbody>
-// </table>
+
 
 ?>
