@@ -1,0 +1,1 @@
+Lägg hela katalogen ie annan sökväg för att testa API

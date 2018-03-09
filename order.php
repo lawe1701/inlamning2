@@ -110,34 +110,34 @@ $html=<<<EOD
             <div class="form-group row">
                 <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Förnamn</label>
                 <div class="col-sm-10">
-                    <input type="name" class="form-control" id="inputName" placeholder="Name" name="first_name">
+                    <input type="name" class="form-control" id="inputName" placeholder="Name" name="first_name" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Efternamn</label>
                 <div class="col-sm-10">
-                    <input type="name" class="form-control" id="inputName2" placeholder="Name" name="second_name">
+                    <input type="name" class="form-control" id="inputName2" placeholder="Name" name="second_name" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" required>
                     
                 </div>
             </div>
             <div class="form-group row">
                 <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Telefon</label>
                 <div class="col-sm-10">
-                    <input type="telefon" class="form-control" id="exampleFormControlInput1" placeholder="phone" name="phone">
+                    <input type="telefon" class="form-control" id="exampleFormControlInput1" placeholder="phone" name="phone" required>
                 </div>
                 </div>
             <div class="form-group row">
                 <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">Adress</label>
                 <div class="col-sm-10">
-                    <input type="adress" class="form-control" id="exampleFormControlInput1" placeholder="Gatuadress" name="street_adress"><br>
-                    <input type="adress" class="form-control" id="exampleFormControlInput1" placeholder="Postadress" name="postal_adress">
-                    <input type="adress" class="form-control" id="exampleFormControlInput1" placeholder="Postnummer" name="postalNr">
+                    <input type="adress" class="form-control" id="exampleFormControlInput1" placeholder="Gatuadress" name="street_adress" required><br>
+                    <input type="adress" class="form-control" id="exampleFormControlInput1" placeholder="Postadress" name="postal_adress" required>
+                    <input type="adress" class="form-control" id="exampleFormControlInput1" placeholder="Postnummer" name="postalNr" required>
                 </div>
             </div>
             <div class="form-group row">
