@@ -25,15 +25,15 @@ if(!isset($_POST['product_ID'])){
 }else{
 // Variabler i POST
 
-    $prodID = $_POST['product_ID'];
+    $prodID = htmlspecialchars($_POST['product_ID']);
     $debug .= "ProduktID: " . $prodID . ".<br>";
-    $prodName = $_POST['product_name'];
+    $prodName = htmlspecialchars($_POST['product_name']);
     $debug .= "Produktnamn: " . $prodName . ".<br>";
-    $prodDesc = $_POST['product_desc'];
+    $prodDesc = htmlspecialchars($_POST['product_desc']);
     $debug .= "Produktnamn: " . $prodDesc . ".<br>";
-    $prodImg = $_POST['product_img'];
+    $prodImg = htmlspecialchars($_POST['product_img']);
     $debug .= "Produktnamn: " . $prodImg . ".<br>";
-    $prodPrice = $_POST['product_price'];
+    $prodPrice = htmlspecialchars($_POST['product_price']);
     $debug .= "Produktpris: " . $prodPrice . " SEK.<br><br>";
 }
 
